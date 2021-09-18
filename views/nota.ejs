@@ -1,0 +1,17 @@
+<%- include("_header") -%>
+
+    <ul>
+
+        <% for (const book of model) { %>
+            <li>
+                <%= book.Titulo %>
+                    <a>: <%= book.Comments %>.</a>
+            </li>
+            <% } %>
+
+    </ul>
+    <button onclick="window.location.href='/create';">
+        Criar Nota
+      </button>
+
+    <%- include("_footer") -%>
