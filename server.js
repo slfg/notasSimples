@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,7 +29,7 @@ db.run(sql_create, err => {
     if (err) {
         return console.error(err.message);
     }
-    console.log("Successful creation of the 'Books' table");
+    console.log("Successful creation of the table");
 
     const sql_insert = `INSERT INTO Notas (Notas_ID, Titulo, Login, Password, Comments) VALUES
     (1, 'Nota de teste', 'admin', '123', 'teste');`;
@@ -82,7 +83,7 @@ app.post("/create", (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
     {
         console.log("http://localhost:3000/");
     }
